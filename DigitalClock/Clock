@@ -1,0 +1,104 @@
+import time
+
+# A digital clock.
+
+# Variables list
+on = True
+AlarmOn = True
+RememberingOn = False
+SecCounter = 0
+MinCounter = 0
+HourCounter = 0
+DayCounter = 1
+MonthCounter = 1
+YearCounter = 1
+# End variables list.
+
+
+class Alarm:
+    SecCounter = 0
+    MinCounter = 1
+    HourCounter = 0
+    Type = "Work"
+    Always = False
+
+
+class Remembering:
+    SecCounter = 0
+    MinCounter = 0
+    HourCounter = 0
+    DayCounter = 1
+    MonthCounter = 1
+    YearCounter = 1
+    Type = "Work"
+    Always = False
+
+
+def alarmcheck():
+    if Alarm.SecCounter == SecCounter and Alarm.MinCounter == MinCounter and Alarm.HourCounter == HourCounter:
+        print("Alarm!!! For:", Alarm.Type)
+
+
+def rememberingcheck():
+    if Remembering.SecCounter == SecCounter and Remembering.MinCounter == MinCounter and Remembering.HourCounter == HourCounter and Remembering.DayCounter == DayCounter and Remembering.MonthCounter == MonthCounter and Remembering.YearCounter == YearCounter:
+        print("You have to:", Remembering.Type)
+
+# H/M/S Clock
+while on:
+    if SecCounter < 60:
+        SecCounter += 1
+    if SecCounter == 60:
+        MinCounter += 1
+        SecCounter = 0
+    if MinCounter == 60:
+        HourCounter += 1
+        MinCounter = 0
+        SecCounter = 0
+    if HourCounter == 24:
+        HourCounter = 0
+        MinCounter = 0
+        SecCounter = 0
+        print("It's the next day.")
+    print("The time is:", HourCounter, ":", MinCounter, ":", SecCounter)
+    time.sleep(1)
+    # Making the day, month, year counter/calender.
+    if HourCounter == 24:
+        DayCounter += 1
+    if MonthCounter == 1 or 3 or 5 or 7 or 8 or 10:
+        if DayCounter == 31 and HourCounter == 24:
+            MonthCounter += 1
+            DayCounter = 1
+    if MonthCounter == 4 or 6 or 9 or 11:
+        if DayCounter == 30 and HourCounter == 24:
+            MonthCounter += 1
+            DayCounter = 1
+# Trying to make a statement for February.
+    if MonthCounter == 2 and YearCounter % 4 != 0:  # If it's NOT a 29 days month.
+        if DayCounter == 28 and HourCounter == 24:
+            MonthCounter += 1
+            DayCounter = 1
+    elif MonthCounter == 2 and YearCounter % 4 == 0:  # If it IS a 29 days month.
+        if DayCounter == 29 and HourCounter == 24:
+            MonthCounter += 1
+            DayCounter = 1
+    elif MonthCounter < 1 or MonthCounter > 12:
+        print("There's something wrong with your Months.")
+    #     New year statement.
+    if MonthCounter == 12:
+        if DayCounter == 30 and HourCounter == 24:
+            MonthCounter = 1
+            DayCounter = 1
+            YearCounter += 1
+            print("Happy new year and welcome to the year:", YearCounter)
+    if AlarmOn:
+        alarmcheck()
+        if Alarm.Always:
+            AlarmOn = True
+        else:
+            AlarmOn = False
+    if RememberingOn:
+        rememberingcheck()
+        if Remembering.Always:
+            RememberingOn = True
+        else:
+            RememberingOn = False
