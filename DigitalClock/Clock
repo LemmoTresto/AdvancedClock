@@ -37,11 +37,15 @@ class Remembering:
 def alarmcheck():
     if Alarm.SecCounter == SecCounter and Alarm.MinCounter == MinCounter and Alarm.HourCounter == HourCounter:
         print("Alarm!!! For:", Alarm.Type)
+        if Alarm.Always == False:
+            AlarmOn = False
 
 
 def rememberingcheck():
     if Remembering.SecCounter == SecCounter and Remembering.MinCounter == MinCounter and Remembering.HourCounter == HourCounter and Remembering.DayCounter == DayCounter and Remembering.MonthCounter == MonthCounter and Remembering.YearCounter == YearCounter:
         print("You have to:", Remembering.Type)
+        if Remembering.Always == False:
+            RememberingOn = False
 
 # H/M/S Clock
 while on:
@@ -92,13 +96,5 @@ while on:
             print("Happy new year and welcome to the year:", YearCounter)
     if AlarmOn:
         alarmcheck()
-        if Alarm.Always:
-            AlarmOn = True
-        else:
-            AlarmOn = False
     if RememberingOn:
         rememberingcheck()
-        if Remembering.Always:
-            RememberingOn = True
-        else:
-            RememberingOn = False
