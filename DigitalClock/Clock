@@ -5,7 +5,7 @@ import time
 # Variables list
 on = True
 AlarmOn = True
-RememberingOn = False
+ReminderOn = False
 SecCounter = 0
 MinCounter = 0
 HourCounter = 0
@@ -23,7 +23,7 @@ class Alarm:
     Always = False
 
 
-class Remembering:
+class Reminder:
     SecCounter = 0
     MinCounter = 0
     HourCounter = 0
@@ -41,11 +41,11 @@ def alarmcheck():
             AlarmOn = False
 
 
-def rememberingcheck():
-    if Remembering.SecCounter == SecCounter and Remembering.MinCounter == MinCounter and Remembering.HourCounter == HourCounter and Remembering.DayCounter == DayCounter and Remembering.MonthCounter == MonthCounter and Remembering.YearCounter == YearCounter:
-        print("Reminder:", Remembering.Type)
-        if Remembering.Always == False:
-            RememberingOn = False
+def remindercheck():
+    if Reminder.SecCounter == SecCounter and Reminder.MinCounter == MinCounter and Reminder.HourCounter == HourCounter and Reminder.DayCounter == DayCounter and Reminder.MonthCounter == MonthCounter and Reminder.YearCounter == YearCounter:
+        print("Reminder:", Reminder.Type)
+        if Reminder.Always == False:
+            ReminderOn = False
 
 # H/M/S Clock
 while on:
@@ -96,5 +96,5 @@ while on:
             print("Happy new year and welcome to the year:", YearCounter)
     if AlarmOn:
         alarmcheck()
-    if RememberingOn:
-        rememberingcheck()
+    if ReminderOn:
+        remindercheck()
