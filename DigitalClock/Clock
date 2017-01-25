@@ -43,7 +43,7 @@ def alarmcheck():
 
 def rememberingcheck():
     if Remembering.SecCounter == SecCounter and Remembering.MinCounter == MinCounter and Remembering.HourCounter == HourCounter and Remembering.DayCounter == DayCounter and Remembering.MonthCounter == MonthCounter and Remembering.YearCounter == YearCounter:
-        print("You have to:", Remembering.Type)
+        print("Reminder:", Remembering.Type)
         if Remembering.Always == False:
             RememberingOn = False
 
